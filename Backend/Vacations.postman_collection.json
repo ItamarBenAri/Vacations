@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "52e0adc2-ca19-4a2a-bfef-94678f35a4ef",
+		"name": "Vacations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32658940"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Itamar",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Ben Ari",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "hjhnj2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "sendPromotionEmails",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/etama/Downloads/me2.jpeg"
+								},
+								{
+									"key": "roleId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"etamar234@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/users/images/:imageName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"images",
+								":imageName"
+							],
+							"variable": [
+								{
+									"key": "imageName",
+									"value": "cc1b9b3f-793c-4395-bd9c-1a613280e301.jpeg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Vacations",
+			"item": [
+				{
+					"name": "Get all vacations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/:userId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":userId"
+							],
+							"query": [
+								{
+									"key": "8",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one vacation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/vacation/:vacationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"vacation",
+								":vacationId"
+							],
+							"variable": [
+								{
+									"key": "vacationId",
+									"value": "114"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add vacation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "destination",
+									"value": "Switzerland",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Switzerland is known for its natural beauty, and exploring the many mountain villages is a must for travelers. The Swiss Alps make up 60 percent of the land and are some of the most beautiful mountains in the world. There are plenty of outdoor activities to be enjoyed and some of the best hiking trails in the world.",
+									"type": "text"
+								},
+								{
+									"key": "startVacation",
+									"value": "2024/01/08",
+									"type": "text"
+								},
+								{
+									"key": "endVacation",
+									"value": "2024/01/14",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "799",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/etama/OneDrive/Pictures/Camera Roll/WIN_20240324_09_06_54_Pro.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/vacations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update vacation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "114",
+									"type": "text"
+								},
+								{
+									"key": "destination",
+									"value": "Thailand",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Good vibes in Thailand",
+									"type": "text"
+								},
+								{
+									"key": "startVacation",
+									"value": "2023/10/02",
+									"type": "text"
+								},
+								{
+									"key": "endVacation",
+									"value": "2023/10/10",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "4100",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/:vacationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":vacationId"
+							],
+							"variable": [
+								{
+									"key": "vacationId",
+									"value": "114"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete vacation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tasety Chai\",\r\n    \"price\": 30,\r\n    \"stock\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "114"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get vacation image file",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/images/:imageUrl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"images",
+								":imageUrl"
+							],
+							"variable": [
+								{
+									"key": "imageUrl",
+									"value": "ca03a0cc-d388-43df-85d6-60ed8738af98.jpg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 36,\r\n    \"vacationId\": 16,\r\n    \"isLiked\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/likes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove like",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vacations/likes/:userId/:vacationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"likes",
+								":userId",
+								":vacationId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "36"
+								},
+								{
+									"key": "vacationId",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozNiwiZmlyc3ROYW1lIjoiSXRhbWFyIiwibGFzdE5hbWUiOiJCZW4gQXJpIiwiZW1haWwiOiJldGFtYXIyMzRAZ21haWwuY29tIiwic2VuZFByb21vdGlvbkVtYWlscyI6ImZhbHNlIiwiaW1hZ2VOYW1lIjoiY2MxYjliM2YtNzkzYy00Mzk1LWJkOWMtMWE2MTMyODBlMzAxLmpwZWciLCJyb2xlSWQiOjEsImltYWdlVXJsIjoiaHR0cDovL2xvY2FsaG9zdDo0MDAwL2FwaS91c2Vycy9pbWFnZXMvY2MxYjliM2YtNzkzYy00Mzk1LWJkOWMtMWE2MTMyODBlMzAxLmpwZWcifSwiaWF0IjoxNzEzNTExMDMzLCJleHAiOjE3MTM1MjkwMzN9.osS4hvMkSZli7LE69kKckWJUYxZP0c-KJ7_tduAf-0g",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

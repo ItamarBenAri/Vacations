@@ -1,0 +1,106 @@
+# Runnig this file: docker-compose up -d --build
+# Stopping: docker-compose down
+# Upload all images to Docker Hub: docker-compose push
+
+# docker-compose version:
+version: '3.8'
+
+# Services list:
+services:
+
+  # Database Service:
+  vacations-database:
+
+    # Image name to create for dockerfile:
+    image: itamarbenari1/vacations-database-image:1.1
+
+    # Where is the location of the dockerfile:
+    build: ./Database
+
+    # Conatainer name:
+    container_name: vacations-database-container
+
+    # On crash - what to do - restart unless manually stopped:
+    restart: unless-stopped
+
+    # Volumes:
+    volumes:
+      - vacations-db:/var/lib/mysql
+
+    # Enviroment Variables needed by MySql Installation:
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_USER: Alice
+      MYSQL_PASSWORD: Wonderland
+      MYSQL_ROOT_PASSWORD: Wonderland
+      MYSQL_DATABASE: vacations
+
+# -----------------------------------------------------------------------------
+
+  # Backend Service name:
+  vacations-backend:
+
+    # On which service we're depending on:
+    depends_on:
+      - vacations-database
+
+    # Image name to create for dockerfile:
+    image: itamarbenari1/vacations-backend-image:1.1
+
+    # Where is the location of the dockerfile:
+    build: ./Backend
+
+    # Conatainer name:
+    container_name: vacations-backend-container
+
+    # Port binding:
+    ports:
+      - 4000:4000
+
+    # On crash - what to do - restart unless manually stopped:
+    restart: unless-stopped
+
+    # Volumes:
+    volumes:
+      - app-images:/app/src/1-assets/images
+      - errors-log:/app/errors.log
+
+    # Enviroment Variables needed by MySql Installation:
+    environment:
+      MYSQL_HOST: vacations-database
+      MYSQL_USER: Alice
+      MYSQL_PASSWORD: Wonderland
+      MYSQL_DATABASE: vacations
+
+# -----------------------------------------------------------------------------
+
+  # Frontend Service Name:
+  vacations-frontend:
+
+    # On which service we're depending on:
+    depends_on:
+      - vacations-backend
+
+    # Image name to create for dockerfile:
+    image: itamarbenari1/vacations-frontend-image:1.1
+
+    # Where is the location of the dockerfile:
+    build: ./Frontend
+
+    # Conatainer name:
+    container_name: vacations-frontend-container
+
+    # Port binding:
+    ports:
+      - 3000:3000
+
+    # On crash - what to do - restart unless manually stopped:
+    restart: unless-stopped
+
+# -----------------------------------------------------------------------------
+
+# Must list the named-volumes here:
+volumes:
+  vacations-db:
+  app-images:
+  errors-log:

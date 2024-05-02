@@ -1,0 +1,13 @@
+.VacationCard {
+    display: inline-flex;
+}
+.VacationCard *::-webkit-scrollbar {
+    display: none;
+}
+
+.VacationCard * {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

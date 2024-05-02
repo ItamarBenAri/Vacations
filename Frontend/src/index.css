@@ -1,0 +1,40 @@
+html,
+body,
+#root {
+    margin: 0;
+    height: 100%;
+    text-align: center;
+    background-color: inherit;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+html,
+body,
+#root * {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html,
+body,
+#root {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Error message for forms */
+.error {
+    color: #d32f2f;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 13px;
+    margin-left: 20px;
+}
